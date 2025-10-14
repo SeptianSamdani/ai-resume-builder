@@ -1,42 +1,42 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Zap, Shield, Users, TrendingUp, Clock } from "lucide-react";
+import { Sparkles, FileCheck, Target, Zap, Shield, Award } from "lucide-react";
 
 const Feature = () => {
   const features = [
     {
+      icon: <Sparkles className="w-5 h-5" />,
+      title: "AI-Powered Content",
+      description: "Let AI write compelling bullet points and optimize your resume content for maximum impact."
+    },
+    {
+      icon: <FileCheck className="w-5 h-5" />,
+      title: "ATS-Friendly",
+      description: "All templates pass Applicant Tracking Systems ensuring your resume gets seen by recruiters."
+    },
+    {
+      icon: <Target className="w-5 h-5" />,
+      title: "Keyword Optimization",
+      description: "AI analyzes job descriptions and optimizes your resume with relevant keywords automatically."
+    },
+    {
       icon: <Zap className="w-5 h-5" />,
-      title: "Lightning Fast",
-      description: "Experience unprecedented speed with our optimized infrastructure and cutting-edge technology."
+      title: "Build in Minutes",
+      description: "Create a professional resume in under 10 minutes with our intuitive builder interface."
     },
     {
       icon: <Shield className="w-5 h-5" />,
-      title: "Secure & Reliable",
-      description: "Enterprise-grade security with 99.9% uptime guarantee to keep your data safe."
+      title: "Data Security",
+      description: "Your personal information is encrypted and secure with bank-level 256-bit SSL protection."
     },
     {
-      icon: <Users className="w-5 h-5" />,
-      title: "Team Collaboration",
-      description: "Work seamlessly with your team with real-time updates and intuitive sharing tools."
-    },
-    {
-      icon: <TrendingUp className="w-5 h-5" />,
-      title: "Scalable Growth",
-      description: "Scale effortlessly as your business grows with our flexible infrastructure."
-    },
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: "24/7 Support",
-      description: "Get help whenever you need it with our dedicated support team available around the clock."
-    },
-    {
-      icon: <CheckCircle className="w-5 h-5" />,
-      title: "Easy Integration",
-      description: "Integrate with your favorite tools in minutes with our comprehensive API documentation."
+      icon: <Award className="w-5 h-5" />,
+      title: "50+ Templates",
+      description: "Choose from professionally designed templates suitable for any industry and career level."
     }
   ];
 
   return (
-    <section className="w-full py-20 px-6 md:px-16 lg:px-24 xl:px-32 bg-white">
+    <section id="features" className="w-full py-20 px-6 md:px-16 lg:px-24 xl:px-32 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Image */}
@@ -49,9 +49,10 @@ const Feature = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-[0_0_50px_-12px_rgba(0,0,0,0.15)] border border-gray-200">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                alt="Features showcase"
+                src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80"
+                alt="Professional resume templates showcase"
                 className="w-full h-auto object-cover"
+                loading="lazy"
               />
               {/* Overlay gradient for elegance */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent"></div>
@@ -76,10 +77,10 @@ const Feature = () => {
                 Features
               </span>
               <h2 className="text-4xl md:text-5xl font-semibold text-black leading-tight">
-                Everything you need to succeed
+                Everything you need to land your dream job
               </h2>
               <p className="text-gray-600 text-lg">
-                Powerful features designed to help you build, scale, and grow your business with confidence.
+                Powerful AI-driven features designed to help you create standout resumes that get noticed by recruiters and pass ATS screening.
               </p>
             </div>
 
@@ -111,8 +112,11 @@ const Feature = () => {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <button className="flex items-center gap-2 bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 group">
-                Explore all features
+              <button 
+                onClick={() => window.location.href = '/login'}
+                className="flex items-center gap-2 bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 group"
+              >
+                Start building your resume
                 <svg
                   width="18"
                   height="18"

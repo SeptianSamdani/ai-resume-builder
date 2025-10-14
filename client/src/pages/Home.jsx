@@ -6,18 +6,36 @@ import Testimonials from '../components/home/Testimonials'
 import Pricing from '../components/home/Pricing'
 import FAQ from '../components/home/FAQ'
 import CTA from '../components/home/CTA'
+import Footer from '../components/home/Footer'
 
 const Home = () => {
   return (
     <div>
-      
+      <Banner />
       <Hero />
-      <Feature />
-      <HowItWorks />
-      <Testimonials />
-      <Pricing />
-      <FAQ />
+      
+      <div id="features">
+        <Feature />
+      </div>
+      
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
+      
+      <div id="testimonials">
+        <Testimonials />
+      </div>
+      
+      <div id="pricing">
+        <Pricing />
+      </div>
+      
+      <div id="faq">
+        <FAQ />
+      </div>
+      
       <CTA />
+      <Footer />
     </div>
   )
 }
