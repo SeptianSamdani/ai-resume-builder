@@ -53,16 +53,17 @@ const Testimonials = () => {
     }
   ];
 
-  const trustedCompanies = [
-    { name: "Google", logo: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" },
-    { name: "Microsoft", logo: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" },
-    { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-    { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
-    { name: "Apple", logo: "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png" }
-  ];
+    const companiesLogo = [
+        { name: "Framer", logo: "https://saasly.prebuiltui.com/assets/companies-logo/framer.svg", },
+        { name: "Huawei", logo: "https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg", },
+        { name: "Instagram", logo: "https://saasly.prebuiltui.com/assets/companies-logo/instagram.svg", },
+        { name: "Microsoft", logo: "https://saasly.prebuiltui.com/assets/companies-logo/microsoft.svg", },
+        { name: "Walmart", logo: "https://saasly.prebuiltui.com/assets/companies-logo/walmart.svg", }
+    ];
 
   return (
-    <section className="w-full py-20 px-6 md:px-16 lg:px-24 xl:px-32 bg-white">
+    <>
+        <section className="w-full py-20 px-6 md:px-16 lg:px-24 xl:px-32 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -156,18 +157,48 @@ const Testimonials = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-gray-600 text-sm mb-8">Trusted by employees from</p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-            {trustedCompanies.map((company, index) => (
-              <div key={index} className="h-8">
-                <span className="text-2xl font-bold text-gray-800">{company.name}</span>
-              </div>
-            ))}
-          </div>
+            <h3 className="text-base text-center text-slate-400 pb-14 font-medium">
+                Trusting by leading brands, including —
+            </h3>
+            <div class="overflow-hidden w-full relative max-w-5xl mx-auto select-none">
+                <div class="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent" />
+
+                <div class="flex marquee-inner will-change-transform max-w-5xl mx-auto">
+                    {[...companiesLogo, ...companiesLogo].map((company, index) => (
+                        <img key={index} className="mx-11" src={company.logo} alt={company.name} />
+                    ))}
+                </div>
+
+                <div class="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent" />
+            </div>
         </motion.div>
       </div>
     </section>
+
+    <style>
+        {`
+                .marquee-inner {
+                    animation: marqueeScroll 15s linear infinite;
+                }
+
+                .marquee-inner-testimonials {
+                    animation: marqueeScroll 35s linear infinite;
+                }
+
+                @keyframes marqueeScroll {
+                    0% {
+                        transform: translateX(0%);
+                    }
+
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+            `}
+    </style>
+    </>
   );
+
 };
 
 export default Testimonials;

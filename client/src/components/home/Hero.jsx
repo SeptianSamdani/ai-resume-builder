@@ -94,7 +94,7 @@ const Hero = () => {
 
         {/* Fade-in image */}
         <motion.img
-          src="https://adminlte.io/wp-content/uploads/2022/02/react-boostrap-templates.jpg"
+          src="https://s3-figma-hubfile-images-production.figma.com/hub/file/carousel/img/0ce829e1e3d85cf37dee85d627290f8429599555"
           className="w-full rounded-[15px] max-w-4xl mt-16 shadow-[0_0_60px_-5px_rgba(0,0,0,0.15)] border border-gray-200"
           alt="hero section showcase"
           initial={{ opacity: 0, scale: 0.95 }}

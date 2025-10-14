@@ -10,7 +10,7 @@ import CTA from '../components/home/CTA'
 const Home = () => {
   return (
     <div>
-      <Banner />
+      
       <Hero />
       <Feature />
       <HowItWorks />
