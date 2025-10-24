@@ -157,7 +157,7 @@ const Testimonials = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-center"
         >
-            <h3 className="text-base text-center text-slate-400 pb-14 font-medium">
+            <h3 className="text-base text-center text-slate-900 pb-14 font-medium">
                 Trusting by leading brands, including —
             </h3>
             <div class="overflow-hidden w-full relative max-w-5xl mx-auto select-none">
