@@ -8,6 +8,9 @@
 
 @layer base {
   button {
-    cursor: pointer;
+    @apply cursor-pointer; 
+  }
+  input:not([type="checkbox"]) {
+    @apply outline-none focus:ring border border-gray-300 focus:ring-slate-500 focus:border-gray-500 rounded-lg; 
   }
 }

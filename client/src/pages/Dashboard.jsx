@@ -1,5 +1,5 @@
-import { FilePenLineIcon, PencilIcon, PlusIcon, TrashIcon, Upload, XIcon } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import { FilePenLineIcon, PencilIcon, PlusIcon, TrashIcon, Upload, UploadCloudIcon, XIcon } from 'lucide-react'
+import React, { useEffect, useState } from 'react';
 import { dummyResumeData } from '../assets/assets'; 
 import { useNavigate } from 'react-router-dom';
 
@@ -17,10 +17,29 @@ const Dashboard = () => {
     setAllResumes(dummyResumeData); 
   }; 
 
-  const createResume = async (events) => {
+  const createResume = async (e) => {
     e.preventDefault(); 
     setShowCreateResume(false); 
     navigate(`/app/builder/${id}`); 
+  }
+
+  const uploadResume = async (e) => {
+    e.preventDefault(); 
+    setShowUploadResume(false); 
+    navigate(`/app/builder/${id}`); 
+  }
+
+  const editTitle = async (event) => {
+    event.preventDefault(); 
+
+  }
+
+  const deleteResume = async (resumeId) => {
+    const confirm = window.confirm("Are you sure want to delete this resume?"); 
+
+    if (confirm) {
+      setAllResumes(prev => prev.filter(resume => resume._id !== resumeId)); 
+    }
   }
 
   useEffect(() => {
@@ -39,7 +58,7 @@ const Dashboard = () => {
             <PlusIcon className='' />
             <p>Create Resume</p>
           </button>
-          <button className="">
+          <button onClick={() => setShowCreateResume(true)} className="">
             <Upload className='' />
             <p className="">Upload Existing</p>
           </button>
@@ -50,15 +69,15 @@ const Dashboard = () => {
         <div className="">
           {allResumes.map((resume, index) => {
             return (
-              <button key={index} className=''>
+              <button key={index} onClick={() => navigate(`/app/builder/${resume._id}`)} className=''>
                 <FilePenLineIcon className='' />
                 <p className="">{resume.title}</p>
                 <p className="">
                   Updated On {new Date(resume.updatedAt).toLocaleDateString()}
                 </p>
-                <div className="">
-                  <TrashIcon className='' />
-                  <PencilIcon className='' />
+                <div onClick={e => e.stopPropagation()} className="">
+                  <TrashIcon onClick={() => deleteResume(resume._id)} className='' />
+                  <PencilIcon onClick={() => {setEditResumeId(resume._id); setTittle(resume.title)}} className='' />
                 </div>
               </button>
             )
@@ -72,7 +91,7 @@ const Dashboard = () => {
                 <h2 className="">
                   Create a Resume
                 </h2>
-                <input type="text" placeholder='Enter resume title' className='' required />
+                <input onChange={(e) => setTittle(e.target.value)} value={title} type="text" placeholder='Enter resume title' className='' required />
 
                 <button className="">
                   Create Resume
@@ -81,6 +100,68 @@ const Dashboard = () => {
                   className='' 
                   onClick={() => {
                     setShowCreateResume(false); 
+                    setTittle(''); 
+                  }} 
+                />
+              </div>
+            </form>
+          )
+        }
+
+        {
+          showUploadResume && (
+            <form onSubmit={uploadResume} onClick={() => setShowUploadResume(false)} className=''>
+              <div onClick={e => e.stopPropagation()} className="">
+                <h2 className="">
+                  Upload a Resume 
+                </h2>
+                <input onChange={(e) => setTittle(e.target.value)} value={title} type="text" placeholder='Enter resume title' className='' required />
+                <div className="">
+                  <label htmlFor="resume-input" className=''>
+                    Select Resume File
+                    <div className="">
+                      {resume ? (
+                        <p className=''>{resume.name}</p>
+                      ) : (
+                        <>
+                          <UploadCloudIcon className='' />
+                          <p>Upload Resume</p>
+                        </>
+                      )}
+                    </div>
+                  </label>
+                  <input type="file" id='resume-input' accept='.pdf' hidden onChange={(e) => setResume(e.target.files[0])} />
+                </div>
+                <button className="">
+                  Upload Resume
+                </button>
+                <XIcon 
+                  className='' 
+                  onClick={() => {
+                    setShowUploadResume(false); 
+                    setTittle(''); 
+                  }} 
+                />
+              </div>
+            </form>
+          )
+        }
+
+        {
+          editResumeId && (
+            <form onSubmit={editTitle} onClick={() => setEditResumeId('')} className=''>
+              <div onClick={e => e.stopPropagation()} className="">
+                <h2 className="">
+                  Edit Resume Title
+                </h2>
+                <input onChange={(e) => setTittle(e.target.value)} value={title} type="text" placeholder='Enter resume title' className='' required />
+                <button className="">
+                  Create Resume
+                </button>
+                <XIcon 
+                  className='' 
+                  onClick={() => {
+                    setEditResumeId(''); 
                     setTittle(''); 
                   }} 
                 />
